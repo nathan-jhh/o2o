@@ -61,7 +61,8 @@ public class ImageUtil {
 			.outputQuality(0.8f).toFile(dest);
 		} catch (IOException e) {
 			logger.error(e.toString());
-			e.printStackTrace();
+			//e.printStackTrace();
+			throw new RuntimeException("创建缩图片失败：" + e.toString());
 		}
 		return relativeAddr;
 	}
