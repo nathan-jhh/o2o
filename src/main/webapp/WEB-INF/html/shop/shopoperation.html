@@ -45,7 +45,7 @@
 				<a class="button button-link button-nav pull-left back"
 					href="/demos/form"> <span class="icon icon-left"></span> 返回
 				</a>
-				<h1 class="title">表单</h1>
+				<h1 class="title">商店信息</h1>
 			</header>
 			<div class="content">
 				<div class="list-block">
@@ -54,89 +54,95 @@
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label">Name</div>
+									<div class="item-title label">商铺名称</div>
 									<div class="item-input">
-										<input type="text" placeholder="Your name">
+										<input type="text" id="shop-name"  placeholder="商铺名称">
 									</div>
 								</div>
 							</div>
 						</li>
+						<!-- 商铺分类 下拉列表 -->
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label">E-mail</div>
+									<div class="item-title label">商铺分类</div>
 									<div class="item-input">
-										<input type="email" placeholder="E-mail">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">Password</div>
-									<div class="item-input">
-										<input type="password" placeholder="Password" class="">
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="item-content">
-								<div class="item-inner">
-									<div class="item-title label">Gender</div>
-									<div class="item-input">
-										<select>
-											<option>Male</option>
-											<option>Female</option>
+										<select id="shop-category">
+											
 										</select>
 									</div>
 								</div>
 							</div>
 						</li>
-						<!-- Date -->
+						<!--区域分类 下拉列表  -->
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label">Birth date</div>
+									<div class="item-title label">所属区域</div>
 									<div class="item-input">
-										<input type="date" placeholder="Birth day" value="2014-04-30">
+										<select id="area">
+											
+										</select>
 									</div>
 								</div>
 							</div>
 						</li>
-						<!-- Switch (Checkbox) -->
+						<!--详细地址 text  -->
 						<li>
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label">Switch</div>
+									<div class="item-title label">详细地址</div>
 									<div class="item-input">
-										<label class="label-switch"> <input type="checkbox">
-											<div class="checkbox"></div>
-										</label>
+										<input type="text" id="shop-addr"  placeholder="详细地址">
 									</div>
 								</div>
 							</div>
 						</li>
+						<!--联系电话 text  -->
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">联系电话</div>
+									<div class="item-input">
+										<input type="text" id="shop-phone"  placeholder="联系电话 ">
+									</div>
+								</div>
+							</div>
+						</li>
+						<!--缩略图 上传控件  -->
+						<li>
+							<div class="item-content">
+								<div class="item-inner">
+									<div class="item-title label">缩略图</div>
+									<div class="item-input">
+										<input type="file" id="shop-img">
+									</div>
+								</div>
+							</div>
+						</li>
+						<!--店铺简介 textarea  -->
 						<li class="align-top">
 							<div class="item-content">
 								<div class="item-inner">
-									<div class="item-title label">Textarea</div>
+									<div class="item-title label">店铺简介</div>
 									<div class="item-input">
-										<textarea></textarea>
+										<textarea id ="shop-desc" placeholder="店铺简介"></textarea>
 									</div>
 								</div>
 							</div>
 						</li>
+						<!--验证码 ka  -->
+						
+						
 					</ul>
 				</div>
 				<div class="content-block">
 					<div class="row">
 						<div class="col-50">
-							<a href="#" class="button button-big button-fill button-danger">取消</a>
+							<a href="#" class="button button-big button-fill button-danger">返回</a>
 						</div>
 						<div class="col-50">
-							<a href="#" class="button button-big button-fill button-success">提交</a>
+							<a href="#" class="button button-big button-fill button-success" id="submit">提交</a>
 						</div>
 					</div>
 				</div>
@@ -150,5 +156,7 @@
 		src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
 	<script type='text/javascript'
 		src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+	<script type='text/javascript'
+		src='../resources/js/shop/shopoperation.js' charset='utf-8'></script>
 </body>
 </html>
