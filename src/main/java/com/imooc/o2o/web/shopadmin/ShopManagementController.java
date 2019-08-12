@@ -42,6 +42,31 @@ public class ShopManagementController {
 	@Autowired
 	private AreaService areaService;
 	
+	@RequestMapping(value = "/getshopbyid", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getShopById(HttpServletRequest request) {
+		Map<String, Object> modelMap = new HashMap<>();
+		// 获取shopid
+		long shopId = HttpServletRequestUtil.getLong(request, "shopId");
+		if (shopId > -1) {
+			try {
+				Shop shop = shopService.getByShopId(shopId);
+				modelMap.put("shop", shop);
+				// 获取区域列表
+				List<Area> areaList = areaService.getAreaList();
+				modelMap.put("areaList", areaList);
+				modelMap.put("success", true);
+			} catch (Exception e) {
+				modelMap.put("success", false);
+				modelMap.put("errMsg", e.toString());
+			}
+		} else {
+			modelMap.put("success", false);
+			modelMap.put("errMsg", ShopStateEnum.NULL_SHOPID.getStateInfo());
+		}
+		return modelMap;
+	}
+	
 	@RequestMapping(value = "/getshopinitinfo",method = RequestMethod.GET)
 	@ResponseBody
 	private Map<String, Object> getShopInitInfo(){
@@ -97,9 +122,8 @@ public class ShopManagementController {
 		}
 		// 2.注册店铺
 		if(shop != null && shopImg != null) {
-			PersonInfo owner = new PersonInfo(); // 可通过session会话获取
-			// Session To Do
-			owner.setUserId(1L);
+			// 通过session会话获取
+			PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
 			shop.setOwner(owner);
 //			File shopImgFile = new File(PathUtil.getImgBasePath() + ImageUtil.getRandomFileName());
 //			try {
@@ -121,6 +145,13 @@ public class ShopManagementController {
 				se = shopService.addShop(shop, shopImg.getInputStream(), shopImg.getOriginalFilename());
 				if(se.getState() == ShopStateEnum.CHECK.getState()) {
 					modelMap.put("success", true);
+					@SuppressWarnings("unchecked")
+					List<Shop> shopList = (List<Shop>) request.getSession().getAttribute("shopList");
+					if (shopList == null || shopList.size() == 0) {
+						shopList = new ArrayList<>();
+					}
+					shopList.add(se.getShop());
+					request.getSession().setAttribute("shopList", shopList);
 				}else {
 					modelMap.put("success", false);
 					modelMap.put("errMsg", se.getStateInfo());
@@ -140,6 +171,69 @@ public class ShopManagementController {
 		}
 		
 
+	}
+	
+	@RequestMapping(value = "/modifyshop", method = RequestMethod.POST)
+	@ResponseBody
+	private Map<String, Object> modifyShop(HttpServletRequest request) {
+		Map<String, Object> result = new HashMap<>();
+
+		// 判断验证码是否正确
+		if (!CodeUtil.checkVerifyCode(request)) {
+			result.put("success", false);
+			result.put("errMsg", "验证码不正确");
+			return result;
+		}
+
+		// 1. 接受并转化相应的参数，包括店铺信息以及图片信息
+		String shopStr = HttpServletRequestUtil.getString(request, "shopStr");
+		ObjectMapper mapper = new ObjectMapper();
+		Shop shop = null;
+		try {
+			shop = mapper.readValue(shopStr, Shop.class);
+		} catch (Exception e) {
+			result.put("success", false);
+			result.put("errMsg", e.getMessage());
+			return result;
+		}
+		// 将CommonsMultipartFile转换成File
+		CommonsMultipartFile shopImg = null;
+		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(
+				request.getSession().getServletContext());
+		// 检测文件是否有上传文件流
+		if (commonsMultipartResolver.isMultipart(request)) {
+			MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
+			shopImg = (CommonsMultipartFile) multipartHttpServletRequest.getFile("shopImg");
+		}
+
+		// 2. 修改店铺
+		if (shop != null && shop.getShopId() != null) {
+			ShopExecution se;
+			try {
+				if (shopImg == null) {
+					se = shopService.modifyShop(shop,null,null);
+				} else {
+					se = shopService.modifyShop(shop,shopImg.getInputStream(),shopImg.getOriginalFilename());
+				}
+				if (se.getState() == ShopStateEnum.SUCCESS.getState()) {
+					result.put("success", true);
+				} else {
+					result.put("success", false);
+					result.put("errMsg", se.getStateInfo());
+				}
+			} catch (ShopOperationException e) {
+				result.put("success", false);
+				result.put("errMsg", e.getMessage());
+			} catch (IOException e) {
+				result.put("success", false);
+				result.put("errMsg", e.getMessage());
+			}
+			return result;
+		} else {
+			result.put("success", false);
+			result.put("errMsg", "请输入店铺id");
+			return result;
+		}
 	}
 	
 //	private static void inputStreamToFile(InputStream ins, File file) {

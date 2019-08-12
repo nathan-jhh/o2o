@@ -17,6 +17,15 @@ import com.imooc.o2o.entity.ShopCategory;
 public class ShopDaoTest extends BaseTest{
 	@Autowired
 	private ShopDao shopDao;
+	
+	@Test
+	public void testQueryByShopId() {
+		long shopId = 16;
+		Shop shop = shopDao.queryByShopId(shopId);
+		System.out.println("area_id: " + shop.getArea().getAreaId());
+		System.out.println("area_name: " + shop.getArea().getAreaName());
+	}
+	
 	@Test
 	@Ignore
 	public void testInsertShop() {
@@ -45,6 +54,7 @@ public class ShopDaoTest extends BaseTest{
 	}
 	
 	@Test
+	@Ignore
 	public void testUpdateShop() {
 		Shop shop = new Shop();
 		shop.setShopId(1L);

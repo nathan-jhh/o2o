@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Date;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,20 @@ import com.imooc.o2o.enums.ShopStateEnum;
 public class ShopServiceTest extends BaseTest{
 	@Autowired
 	private ShopService shopService;
-	
+
 	@Test
+	public void testModifyShop() throws FileNotFoundException {
+		Shop shop = new Shop();
+		shop.setShopId(14L);
+		shop.setShopName("修改后的店铺名称");
+		shop.setPhone("18810233099");
+		File shopImg = new File("E:/oto_resourse/image/dabai.jpg");
+		InputStream is = new FileInputStream(shopImg);
+		ShopExecution shopExecution = shopService.modifyShop(shop, is, "dabai.jpg");
+		System.out.println("新的图片地址为： " + shopExecution.getShop().getShopImg());
+	}
+	@Test
+	@Ignore
 	public void testAddShop() throws FileNotFoundException {
 		Shop shop = new Shop();
 		PersonInfo owner = new PersonInfo();
