@@ -11,6 +11,7 @@ public class ShopCategory {
     private Date createTime;
     private Date lastEditTime;
     private ShopCategory parent;
+    
 	public Long getShopCategoryId() {
 		return shopCategoryId;
 	}

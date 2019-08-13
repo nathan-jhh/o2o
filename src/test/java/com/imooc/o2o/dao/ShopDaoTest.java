@@ -3,6 +3,7 @@ package com.imooc.o2o.dao;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,6 +20,26 @@ public class ShopDaoTest extends BaseTest{
 	private ShopDao shopDao;
 	
 	@Test
+	public void testQueryShopListAndCount() {
+		Shop shopCondition = new Shop();
+		PersonInfo owner = new PersonInfo();
+		owner.setUserId(1L);
+		shopCondition.setOwner(owner);
+		List<Shop> shopList = shopDao.queryShopList(shopCondition, 0, 3);
+		int count = shopDao.queryShopCount(shopCondition);
+		System.out.println("店铺列表的大小：" + shopList.size());
+		System.out.println("店铺总数的大小：" + count);
+		ShopCategory sc = new ShopCategory();
+		sc.setShopCategoryId(1L);
+		shopCondition.setShopCategory(sc);
+		List<Shop> shopList1 = shopDao.queryShopList(shopCondition, 0, 2);
+		int count1 = shopDao.queryShopCount(shopCondition);
+		System.out.println("新店铺列表的大小：" + shopList1.size());
+		System.out.println("新店铺总数的大小：" + count1);
+	}
+	
+	@Test
+	@Ignore
 	public void testQueryByShopId() {
 		long shopId = 16;
 		Shop shop = shopDao.queryByShopId(shopId);
