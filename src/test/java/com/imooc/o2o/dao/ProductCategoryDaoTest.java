@@ -14,18 +14,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.imooc.o2o.BaseTest;
 import com.imooc.o2o.entity.ProductCategory;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)  // 控制测试方法的顺序执行
 public class ProductCategoryDaoTest extends BaseTest {
 	@Autowired
 	private ProductCategoryDao productCategoryDao;
 
 	@Test
+	
 	public void testBQueryByShopId() throws Exception {
 		long shopId = 1;
 		List<ProductCategory> productCategoryList = productCategoryDao.queryProductCategoryList(shopId);
 		System.out.println("该店铺自定义类别数为：" + productCategoryList.size());
 	}
 	@Test
+	
 	public void testABatchInsertProductCategory(){
 		ProductCategory productCategory = new ProductCategory();
 		productCategory.setProductCategoryName("商品类别1");
@@ -43,7 +45,9 @@ public class ProductCategoryDaoTest extends BaseTest {
 		int effectedNum = productCategoryDao.batchInsertProductCategory(productCategoryList);
 		assertEquals(2, effectedNum);
 	}
+	
 	@Test
+	
 	public void testCDeleteProductCategory() throws Exception {
 		long shopId = 1;
 		List<ProductCategory> productCategoryList = productCategoryDao.queryProductCategoryList(shopId);

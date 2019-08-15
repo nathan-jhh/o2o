@@ -12,7 +12,7 @@ public class Product {
     private String promotionPrice;
     private Integer priority;
     private Date createTime;
-    private Date lastEdittime;
+    private Date lastEditTime;
     // 0 下架 1 展示
     private Integer enableStatus;
     // 图片列表
@@ -70,11 +70,11 @@ public class Product {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-	public Date getLastEdittime() {
-		return lastEdittime;
+	public Date getLastEditTime() {
+		return lastEditTime;
 	}
-	public void setLastEdittime(Date lastEdittime) {
-		this.lastEdittime = lastEdittime;
+	public void setLastEditTime(Date lastEditTime) {
+		this.lastEditTime = lastEditTime;
 	}
 	public Integer getEnableStatus() {
 		return enableStatus;
