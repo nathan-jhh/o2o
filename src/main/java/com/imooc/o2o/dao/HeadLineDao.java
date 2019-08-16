@@ -12,6 +12,6 @@ public interface HeadLineDao {
 	 * @param headLineCondition
 	 * @return
 	 */
-	List<HeadLineDao> queryHeadLine(@Param("headLineCondition") HeadLine headLineCondition);
+	List<HeadLine> queryHeadLine(@Param("headLineCondition") HeadLine headLineCondition);
 	
 }

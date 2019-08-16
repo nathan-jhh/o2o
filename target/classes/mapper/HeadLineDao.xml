@@ -8,6 +8,7 @@
 		line_id,
 		line_name,
 		line_link,
+		line_img,
 		priority,
 		enable_status,
 		create_time,
@@ -19,6 +20,8 @@
 				and enable_status = #{headLineCondition.enableStatus}
 			</if>
 		</where>
+		ORDER BY
+		priority DESC
 	</select>
 
 </mapper>

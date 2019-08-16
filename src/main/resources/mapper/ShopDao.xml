@@ -50,7 +50,7 @@
                 AND s.shop_category_id = #{shopCondition.shopCategory.shopCategoryId}
             </if>
             <if test="shopCondition.area != null and shopCondition.area.areaId != null">
-                AND s.shop_area_id = #{shopCondition.area.areaId}
+                AND s.area_id = #{shopCondition.area.areaId}
             </if>
             <if test="shopCondition.shopName != null">
                 AND s.shop_name LIKE "%${shopCondition.shopName}%"
@@ -80,7 +80,7 @@
                 AND s.shop_category_id = #{shopCondition.shopCategory.shopCategoryId}
             </if>
             <if test="shopCondition.area != null and shopCondition.area.areaId != null">
-                AND s.shop_area_id = #{shopCondition.area.areaId}
+                AND s.area_id = #{shopCondition.area.areaId}
             </if>
             <if test="shopCondition.shopName != null">
                 AND s.shop_name LIKE "%${shopCondition.shopName}%"
