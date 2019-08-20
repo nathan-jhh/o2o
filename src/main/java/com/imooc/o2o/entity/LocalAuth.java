@@ -3,18 +3,19 @@ package com.imooc.o2o.entity;
 import java.util.Date;
 
 public class LocalAuth {
-	private Long loalAuthId;
+	private Long localAuthId;
 	private String username;
 	private String password;
 	private Date createTime;
 	private Date lastEditTime;
     private PersonInfo personInfo;
     
-	public Long getLoalAuthId() {
-		return loalAuthId;
+	
+	public Long getLocalAuthId() {
+		return localAuthId;
 	}
-	public void setLoalAuthId(Long loalAuthId) {
-		this.loalAuthId = loalAuthId;
+	public void setLocalAuthId(Long localAuthId) {
+		this.localAuthId = localAuthId;
 	}
 	public String getUsername() {
 		return username;
