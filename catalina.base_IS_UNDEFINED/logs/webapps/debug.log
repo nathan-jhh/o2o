@@ -33,3 +33,15 @@
 2019-08-20 18:11:16.831 [main] DEBUG c.i.o2o.dao.WechatAuthDao.queryWechatInfoByOpenId - ==>  Preparing: SELECT w.wechat_auth_id, w.open_id, w.create_time, p.user_id, p.name, p.gender, p.email, p.profile_img, p.user_type, p.create_time, p.last_edit_time, p.enable_status FROM tb_wechat_auth w LEFT JOIN tb_person_info p ON w.user_id = p.user_id WHERE w.open_id = ? 
 2019-08-20 18:11:16.832 [main] DEBUG c.i.o2o.dao.WechatAuthDao.queryWechatInfoByOpenId - ==> Parameters: dafahizhfdhaih(String)
 2019-08-20 18:11:16.843 [main] DEBUG c.i.o2o.dao.WechatAuthDao.queryWechatInfoByOpenId - <==      Total: 1
+2019-08-20 23:12:24.036 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - ==>  Preparing: SELECT area_id,area_name,priority,create_time,last_edit_time FROM tb_area ORDER BY priority DESC 
+2019-08-20 23:12:26.551 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - ==> Parameters: 
+2019-08-20 23:12:28.774 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - <==      Total: 4
+2019-08-20 23:28:32.845 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - ==>  Preparing: SELECT area_id,area_name,priority,create_time,last_edit_time FROM tb_area ORDER BY priority DESC 
+2019-08-20 23:28:32.882 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - ==> Parameters: 
+2019-08-20 23:28:32.928 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - <==      Total: 4
+2019-08-20 23:32:01.962 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - ==>  Preparing: SELECT area_id,area_name,priority,create_time,last_edit_time FROM tb_area ORDER BY priority DESC 
+2019-08-20 23:32:02.027 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - ==> Parameters: 
+2019-08-20 23:32:02.055 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - <==      Total: 4
+2019-08-20 23:34:27.414 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - ==>  Preparing: SELECT area_id,area_name,priority,create_time,last_edit_time FROM tb_area ORDER BY priority DESC 
+2019-08-20 23:34:30.517 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - ==> Parameters: 
+2019-08-20 23:34:32.370 [main] DEBUG com.imooc.o2o.dao.AreaDao.queryArea - <==      Total: 4

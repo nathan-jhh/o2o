@@ -146,7 +146,12 @@
 	    <artifactId>kaptcha</artifactId>
 	    <version>2.3.2</version>
 	</dependency>
-	
+	<!-- redis客户端:Jedis -->
+	<dependency>
+		<groupId>redis.clients</groupId>
+		<artifactId>jedis</artifactId>
+		<version>2.9.0</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>o2o</finalName>
