@@ -10,7 +10,7 @@ public class PathUtil {
 		if(os.toLowerCase().startsWith("win")) {
 			basePath = "E:/oto_resourse/image";
 		}else {
-			basePath = "/home/jhh/image";
+			basePath = "/home/work/image";
 		}
 		basePath = basePath.replace("/", separator);
 		return basePath;

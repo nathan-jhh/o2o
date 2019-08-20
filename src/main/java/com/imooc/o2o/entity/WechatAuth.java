@@ -5,9 +5,8 @@ import java.util.Date;
 public class WechatAuth {
 	private Long wechatAuthId;
 	private String openId;
-	private Date creatTime;
+	private Date createTime;
 	private PersonInfo personInfo;
-	
 	public Long getWechatAuthId() {
 		return wechatAuthId;
 	}
@@ -20,11 +19,11 @@ public class WechatAuth {
 	public void setOpenId(String openId) {
 		this.openId = openId;
 	}
-	public Date getCreatTime() {
-		return creatTime;
+	public Date getCreateTime() {
+		return createTime;
 	}
-	public void setCreatTime(Date creatTime) {
-		this.creatTime = creatTime;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 	public PersonInfo getPersonInfo() {
 		return personInfo;
@@ -32,6 +31,7 @@ public class WechatAuth {
 	public void setPersonInfo(PersonInfo personInfo) {
 		this.personInfo = personInfo;
 	}
+	
 	
 	
 }
