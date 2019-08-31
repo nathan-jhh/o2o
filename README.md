@@ -2,8 +2,8 @@
 
 ### 技术栈：
 
-**前端**：前端UI库 SUI Mobile／ jQuery／ Chrome UA <br/>
-**后端**：SSM／／图片开源工具 Thumbnailator / 验证码组件Kaptcha／<br/>
+**前端**：前端UI库SUI Mobile／jQuery／Chrome UA <br/>
+**后端**：SSM／图片开源工具 Thumbnailator / 验证码组件Kaptcha／<br/>
 **平台**：Web／微信测试号<br/>
 **数据库**：MySQL<br/>
 **缓存**：Redis<br/>
